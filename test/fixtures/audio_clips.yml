@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  clip: 
+  color: 1
+  clip_date: 2017-03-09
+
+two:
+  title: MyString
+  clip: 
+  color: 1
+  clip_date: 2017-03-09

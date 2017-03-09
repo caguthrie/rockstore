@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Audio Clips</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Clip</th>
+      <th>Color</th>
+      <th>Clip date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @audio_clips.each do |audio_clip| %>
+      <tr>
+        <td><%= audio_clip.title %></td>
+        <td><%= audio_clip.clip %></td>
+        <td><%= audio_clip.color %></td>
+        <td><%= audio_clip.clip_date %></td>
+        <td><%= link_to 'Show', audio_clip %></td>
+        <td><%= link_to 'Edit', edit_audio_clip_path(audio_clip) %></td>
+        <td><%= link_to 'Destroy', audio_clip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Audio Clip', new_audio_clip_path %>

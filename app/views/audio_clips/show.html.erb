@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @audio_clip.title %>
+</p>
+
+<p>
+  <strong>Clip:</strong>
+  <%= @audio_clip.clip %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @audio_clip.color %>
+</p>
+
+<p>
+  <strong>Clip date:</strong>
+  <%= @audio_clip.clip_date %>
+</p>
+
+<%= link_to "Download", @audio_clip.clip.url(:original, false) %>
+
+<%= link_to 'Edit', edit_audio_clip_path(@audio_clip) %> |
+<%= link_to 'Back', audio_clips_path %>
