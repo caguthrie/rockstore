@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170309163643) do
+ActiveRecord::Schema.define(version: 20170309182645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(version: 20170309163643) do
     t.string   "clip_content_type"
     t.integer  "clip_file_size"
     t.datetime "clip_updated_at"
+  end
+
+  create_table "audio_histories", force: :cascade do |t|
+    t.integer  "audio_clip_id"
+    t.macaddr  "mac_address"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
 end

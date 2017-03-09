@@ -1,6 +1,27 @@
 class AudioClipsController < ApplicationController
   before_action :set_audio_clip, only: [:show, :edit, :update, :destroy]
 
+  def get_latest_unread
+    clip_path = nil
+    AudioClip.where('clip_date > ?', 7.days.ago).order(:clip_date).each do |clip|
+      result = AudioHistory.where('mac_address = ?', params[:mac_address]).where('audio_clip_id = ?', clip.id)
+      if result.length == 0
+        clip_path = clip.clip.path
+        ah = AudioHistory.new
+        ah.mac_address = params[:mac_address]
+        clip.audio_history << ah
+        ah.save
+        break
+      end
+    end
+    if clip_path != nil
+      send_file clip_path, type: 'audio/mpeg', filename: 'clip.mp3'
+    else
+      # Return a 204 (No Content) is nothing available
+      render :nothing => true, :status => :no_content
+    end
+  end
+  
   # GET /audio_clips
   # GET /audio_clips.json
   def index
