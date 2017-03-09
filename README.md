@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app stores and saves audio files for consumption by IoT devices.
 
-Things you may want to cover:
+hosted at: https://rockstore.herokuapp.com/audio_clips
 
-* Ruby version
+To run:
 
-* System dependencies
+```bundle install```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```rails s```
