@@ -1,6 +1,17 @@
 class AudioClipsController < ApplicationController
   before_action :set_audio_clip, only: [:show, :edit, :update, :destroy]
 
+  def is_there_new_clip
+    result = []
+    AudioClip.where('clip_date > ?', 7.days.ago).order(:clip_date).each do |clip|
+      already_seen = AudioHistory.where('mac_address = ?', params[:mac_address]).where('audio_clip_id = ?', clip.id)
+      if already_seen.length == 0
+        result << clip
+      end
+    end
+    render json: result
+  end
+  
   def get_latest_unread
     clip_path = nil
     AudioClip.where('clip_date > ?', 7.days.ago).order(:clip_date).each do |clip|
